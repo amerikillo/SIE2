@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Marbete" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ac5afa2b-dbeb-4948-9e26-5043590070db">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="folmar" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT L.F_ClaPro,M.F_DesPro,L.F_ClaLot,DATE_FORMAT(L.F_FecCad,'%d/%m/%Y') as F_FecCad,L.F_Cb FROM tb_lote L INNER JOIN tb_medica M ON L.F_ClaPro=M.F_ClaPro INNER JOIN tb_compra C ON L.F_FolLot=C.F_Lote WHERE C.F_ClaDoc=$P{folmar}]]>
+	</queryString>
+	<field name="F_ClaPro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="F_DesPro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="F_ClaLot" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="F_FecCad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="F_Cb" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="58">
+			<componentElement>
+				<reportElement uuid="95ad4b3c-9cb9-4917-b03b-b33e480e735d" x="477" y="5" width="272" height="53"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{F_Cb}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="99">
+			<staticText>
+				<reportElement uuid="8017297a-ac18-448f-a355-b2dfd3358853" mode="Opaque" x="310" y="-16" width="139" height="46" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLAVE]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="5ea55e41-044f-472e-97ac-fca7391c0758" x="127" y="30" width="515" height="60"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="42"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{F_ClaPro}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="280">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="79a53dd9-83ae-4dc8-87f2-55da051f66ab" x="0" y="48" width="752" height="77"/>
+				<textElement>
+					<font fontName="Arial Black" size="36"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{F_DesPro}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="a3cb6261-449f-435e-9c0e-c8eae8ef5f10" x="0" y="221" width="351" height="59"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="36"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{F_ClaLot}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="18a15e74-4323-4ef4-9fc0-05b21c86aacf" x="407" y="221" width="273" height="59"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="36"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{F_FecCad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5377696e-b599-4494-bc88-f8f4757b9a81" mode="Opaque" x="86" y="161" width="113" height="48" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LOTE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a004ef0f-c7dc-438b-b2a5-39d4e95bcb9d" mode="Opaque" x="264" y="0" width="253" height="50" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="17645458-6049-4a01-adbe-bdd4f6608c0b" mode="Opaque" x="407" y="161" width="235" height="48" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CADUCIDAD:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17"/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
